@@ -1,4 +1,4 @@
-# Dynamic programming solution to Apes vs Humans Board Game
+# Dynamic programming solution to Apes vs Humans
 
 ## Problem Description
 Implement a dynamic programming solution to the following problem.
