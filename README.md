@@ -1,7 +1,7 @@
-DP
-# Dynamic programming solution to board game
+# Dynamic programming solution to Apes vs Humans Board Game
 
 ## Problem Description
+Implement a dynamic programming solution to the following problem.
 
 ### Deforestation: An Inevitable Fate
 In quarantine, you’ve found yourself playing many games. As a fanatic of Civilization and
