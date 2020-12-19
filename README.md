@@ -92,7 +92,8 @@ decrease the value of the right array, since we are effectively adding an elemen
 left array while substracting that value from the right array. The value of the OPT is
 always the minimum of these two subsets, since the humans always pick the optimal side.
 Now there are two cases:
-(a) case 1:
+
+*case 1:
 The value of the left array is initially less than the value of the right array. In this
 case, moving the wall to the right will keep increasing the value of the left array until
 it is equal to the right array and then eventually exceeds it. In this case the humans
@@ -103,7 +104,8 @@ left side is still slightly less than the right side. Then the humans will switc
 picking the left side when the value of the left surpasses the value of the right side.
 At this point, moving the wall placement further to the right will only decrease the
 profits of the apes.
-(b) case 2:
+
+*case 2:
 The value of the left array is initially greater than the value of the right array. In
 this case, the humans will approach from the left, and the apes will receive the value of the right side. Now, moving the wall to the right will only further increase the
 value of the left array whille decreasing the profit of the apes.
@@ -113,20 +115,20 @@ further placement of the wall.
 #### Proof of (b)
 Proof by contradiction:
 Suppose that an array of size k − 1 has an optimal wall placement of w, and that array plus one more element of size k has an optimal wall placement of w − 1. Consider the subarrays created by partitioning the array of size k at w − 1. sL : {1, w − 1} and sR : {w, k}. The wall placement is optimal, so that means that the maximum amount of fruit is the minimum of these two arrays. Now consider two cases:
-(a) case 1: the humans approach from the left.
+*case 1: the humans approach from the left.
 In this case, the optimal fruit the apes can get is equal to OPT( sR : {w, k}). However,
 the wall placement at w − 1 was available to the apes even in the smaller array of size
 k − 1. If the apes had placed the wall at w − 1 in the smaller problem, sL : {1, w − 1}
 and sR : {w, k − 1}. Since we know the humans approached from the left in the larger
 problem, we know that the apes would have gotten more fruit by approaching from the
 left, but now they will get the fruit on the right side. Therefore, adding an element to the left side of the array would only further increase the OPT of the left side while further decreasing the apes’ profits. This is a contradiction to the optimal wall placement in the smaller problem being at w, which is greater than w − 1.
-(b) case 2: the humans approach from the right
+*case 2: the humans approach from the right
 In this case, the optimal fruit the apes can get is equal to OPT( sL : {1, w − 1}). The
 humans approach from the side the minimizes the apes’ profit, so the apes would have
-earned more fruit if they could approach from the right, but instead will receive the fruit that they can get by approaching from the left. However, sL : {1, w − 1} was still an available option for the smaller array of size k −1, but in that problem, adding one more element to the left side was optimal, meaning that the apes were able to receive more fruit. This means that adding one more element to the left side increased the yield of the apes without making the OPT of the left side greater than the right. However, the
-smaller array has one less element on the right side than the larger problem, so if the
-wall placement at w could increase the ape profit without surpassing the OPT of the
-right, then the apes would have also chosen to place the wall at w in the larger problem.
-This is a contradiction to w − 1 being the optimal wall placement in the larger problem.
-From these two cases, we have shown that the wall placement of an array of size k will always have been at least the same as the wall placement in an array of the first k − 1 elements. Now, we have an upper and a lower bound on the amount of times we need to loop through the wall placements to find the optimal solution. The initial wall placement of any subproblem of size k must be at least greater than or equal to the wall placement of the subproblem of size k − 1. Also, we can stop looping when the value of the OPT stops increasing.
+earned more fruit if they could approach from the right, but instead will receive the fruit that they can get by approaching from the left. However, sL : {1, w − 1} was still an available option for the smaller array of size k −1, but in that problem, adding one more element to the left side was optimal, meaning that the apes were able to receive more fruit. This means that adding one more element to the left side increased the yield of the apes without making the OPT of the left side greater than the right. However, the smaller array has one less element on the right side than the larger problem, so if the
+wall placement at w could increase the ape profit without surpassing the OPT of the right, then the apes would have also chosen to place the wall at w in the larger problem. This is a contradiction to w − 1 being the optimal wall placement in the larger problem. 
+
+From these two cases, we have shown that the wall placement of an array of size k will always have been at least the same as the wall placement in an array of the first k − 1 elements. Now, we have an upper and a lower bound on the amount of times we need to loop through the wall placements to find the optimal solution. The initial wall placement of any subproblem of size k must be at least greater than or equal to the wall placement of the subproblem of size k − 1. Also, we can stop looping when the value of the OPT stops increasing. Considering these two constraints, the worst case would be when the optimal wall placement moves one place to the right after each round of the game. Now, in the worst case scenario, every time we increase the length of the array, the average walls we check is equal to 1. This is because if the average was greater than 1, this implies that the total amount of wall checks was more
+than n times, which is not possible. Therefore, in the worst case, the average amount of times
+that the wall placement is checked is 1. This gives a runtime of O(n^2).
 
